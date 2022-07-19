@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolkDiet", "VolkDiet\VolkDiet.csproj", "{C7AF46A7-9E61-4CFA-AC92-137B144E1924}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolkDiet", "Web\VolkDiet.csproj", "{C7AF46A7-9E61-4CFA-AC92-137B144E1924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolkDiet.Core", "VolkDiet.Core\VolkDiet.Core.csproj", "{8793D0C2-681A-47A0-BCFD-C4C15D4CCDB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C7AF46A7-9E61-4CFA-AC92-137B144E1924}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7AF46A7-9E61-4CFA-AC92-137B144E1924}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7AF46A7-9E61-4CFA-AC92-137B144E1924}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8793D0C2-681A-47A0-BCFD-C4C15D4CCDB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8793D0C2-681A-47A0-BCFD-C4C15D4CCDB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8793D0C2-681A-47A0-BCFD-C4C15D4CCDB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8793D0C2-681A-47A0-BCFD-C4C15D4CCDB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
