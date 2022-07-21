@@ -1,10 +1,18 @@
 # Volkdiet
-Software gestione diete .NET
-
-Segui la [storia completa](https://www.youtube.com/playlist?list=PLzoe2DR2djDYePswOq71jRrZYwMP8sPNd) su **youtube**
+Appunti
 
 
-### Todos
-Il progetto sarà successivamente aperto a eventuali collaborazioni.
+### Scaffolding EF
 
+Scaffold-Dbcontext "server=xxx;database=northwind;trusted_connection=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir <outdir>
 
+### Migration
+
+ add-migration InitialDbMsSql -Context volkDietMsSqlContext -outputdir <outdir>\Migrations\MsSql\
+ add-migration InitialDbPgSql -Context volkDietPgSqlContext -outputdir <outdir>\Migrations\PgSql\
+
+ remove-migration -context volkDietMsSqlContext
+ remove-migration -context volkDietPgSqlContext
+
+ update-database  -context volkDietMsSqlContext
+ update-database  -context volkDietPgSqlContext
