@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VolkDiet.Core\VolkDiet.Core.csproj" />
+    <ProjectReference Include="..\VolkDiet.WebCore\VolkDiet.WebCore.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,13 @@
+
+using VolkDiet.WebCore.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+//Calling configuration service routines
+builder.Services.ConfigureServicesOnApp(builder);
+
+//Add services to the container.
+//builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -25,11 +31,3 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-
-
-
-
- void ConfigureServices(IServiceCollection services)
-{
-
-}

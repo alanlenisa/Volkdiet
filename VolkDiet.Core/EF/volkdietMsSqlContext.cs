@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VolkDiet.Core.EF;
 
-namespace AprosData.ef
+
+namespace VolkDiet.Core.EF
 {
     /// <summary>
     /// sqlserver data provider
