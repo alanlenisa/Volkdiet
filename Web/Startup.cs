@@ -1,6 +1,9 @@
 ﻿
+
 using VolkDiet.Core.EF;
+using VolkDiet.Core.Caching;
 using VolkDiet.Core.Infrastructure;
+using VolkDiet.Core.Localization;
 
 namespace VolkDiet
 {
@@ -15,6 +18,11 @@ namespace VolkDiet
         /// <param name="configuration"></param>
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
+           
+
+            services.AddHttpContextAccessor();//https://www.c-sharpcorner.com/forums/httpcontext-is-null
+
+            //database provider selection, setted on appsettings.json
             switch (configuration["DatabaseProvider"])
             {
                 case "MsSql":
@@ -25,6 +33,13 @@ namespace VolkDiet
                     services.AddDbContext<volkdietContext, volkdietPgSqlContext>();
                     break;
             }
+
+            services.AddSingleton<ICacheManager, MemCacheManager>();
+
+
+
+            services.AddScoped<ILocalizationService, LocalizationService>();
+
 
             services.AddControllersWithViews();
         }
