@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolkDiet", "Web\VolkDiet.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolkDiet.Core", "VolkDiet.Core\VolkDiet.Core.csproj", "{8793D0C2-681A-47A0-BCFD-C4C15D4CCDB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolkDiet.WebCore", "VolkDiet.WebCore\VolkDiet.WebCore.csproj", "{82A06508-FAFB-4772-A814-96242B85DCBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolkDiet.WebCore", "VolkDiet.WebCore\VolkDiet.WebCore.csproj", "{82A06508-FAFB-4772-A814-96242B85DCBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

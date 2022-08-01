@@ -4,12 +4,18 @@ using VolkDiet.Core.EF;
 using VolkDiet.Core.Caching;
 using VolkDiet.Core.Infrastructure;
 using VolkDiet.Core.Localization;
+using VolkDiet.Core.DataServices;
 
 namespace VolkDiet
 {
     public class Startup : IConfigStartup
     {
         public int Rank => 100;
+
+        public void Configure(IApplicationBuilder application)
+        {
+            
+        }
 
         /// <summary>
         /// configure web project services
@@ -39,6 +45,8 @@ namespace VolkDiet
 
 
             services.AddScoped<ILocalizationService, LocalizationService>();
+
+            services.AddScoped<ILocalizedStringsService, LocalizedStringsService>();
 
 
             services.AddControllersWithViews();

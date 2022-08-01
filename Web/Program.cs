@@ -1,4 +1,5 @@
 
+using VolkDiet.Core.Infrastructure;
 using VolkDiet.WebCore.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,9 @@ builder.Services.ConfigureServicesOnApp(builder);
 //builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.ConfigurePipeline();
+app.StartEngine();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

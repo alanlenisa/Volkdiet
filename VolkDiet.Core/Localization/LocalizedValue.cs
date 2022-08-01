@@ -10,7 +10,7 @@ namespace VolkDiet.Core.Localization
 {
     public class LocalizedValue:VDEntity
     {
-        public string Language { get; set; }
+        public int Language { get; set; }
         public string Name { get; set; }
         public string Value { get; set; }
     }

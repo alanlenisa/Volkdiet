@@ -18,6 +18,6 @@ namespace VolkDiet.Core.Localization
             string defaultValue = "");
 
 
-        public  TPropType GetLocalizedAsync<TEntity, TPropType>(TEntity entity, Expression<Func<TEntity, TPropType>> keySelector) where TEntity:class;
+        //public  TPropType GetLocalizedAsync<TEntity, TPropType>(TEntity entity, Expression<Func<TEntity, TPropType>> keySelector) where TEntity:class;
     }   
 }

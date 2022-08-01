@@ -14,12 +14,10 @@ namespace VolkDiet.Core.Infrastructure
         /// </summary>
         void ConfigureServices(IServiceCollection services, IConfiguration configuration);
 
-        ///// <summary>
-        ///// Configure HTTP request pipeline
-        ///// </summary>
-        ///// <param name="application">Builder for configuring an application's request pipeline</param>
-        //void ConfigureRequestPipeline(IApplicationBuilder application);
 
+        void Configure(IApplicationBuilder application);
+
+        
         /// <summary>
         /// Resolve dep.
         /// </summary>
@@ -35,7 +33,6 @@ namespace VolkDiet.Core.Infrastructure
        
 
 
-        void ConfigureRequestPipeline(IApplicationBuilder application);
 
         object ResolveNotRegistered(Type type);
 

@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VolkDiet.Core.Caching;
-using VolkDiet.Core.Localization;
+
 using VolkDiet.Models;
+using VolkDiet.WebCore.Mvc;
 
 namespace VolkDiet.Controllers
 {

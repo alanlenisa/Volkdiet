@@ -45,16 +45,31 @@ namespace VolkDiet.Core.Infrastructure
             return GetServiceProvider(scope)?.GetService(type);
         }
 
-
-        public void ConfigureRequestPipeline(IApplicationBuilder application)
+        /// <summary>
+        /// looks all IConfigStartup implementations and run their routine 'Configure'
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public void Configure(IApplicationBuilder application)
         {
             
             ServiceProvider = application.ApplicationServices;
-          
+
+            var typeFinder = new TypeFinder();
+            var configStartups = typeFinder.FindClasses(typeof(IConfigStartup));
+
+
+            var instances = configStartups
+                .Select(s => (IConfigStartup)Activator.CreateInstance(s))
+                .OrderBy(s => s?.Rank);
+
+
+            foreach (var instance in instances)
+                instance.Configure(application);
 
         }
 
-        
+
         public virtual object ResolveNotRegistered(Type type)
         {
             Exception innerException = null;
@@ -73,7 +88,7 @@ namespace VolkDiet.Core.Infrastructure
                         return service;
                     });
 
-                    //all is ok, so create instance
+                   
                     return Activator.CreateInstance(type, parameters.ToArray());
                 }
                 catch (Exception ex)
@@ -85,17 +100,22 @@ namespace VolkDiet.Core.Infrastructure
             throw new Exception("???",  innerException);
         }
 
+        /// <summary>
+        /// looks all IConfigStartup implementations and run their routine 'ConfigureService'
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IEngine>(this);
 
             var typeFinder =  new TypeFinder(); 
-            var startupConfigurations = typeFinder.FindClasses(typeof(IConfigStartup));
+            var configStartups = typeFinder.FindClasses(typeof(IConfigStartup));
 
            
-            var instances = startupConfigurations
-                .Select(startup => (IConfigStartup)Activator.CreateInstance(startup))
-                .OrderBy(startup => startup.Rank);
+            var instances = configStartups
+                .Select(s => (IConfigStartup)Activator.CreateInstance(s))
+                .OrderBy(s => s?.Rank);
 
            
             foreach (var instance in instances)

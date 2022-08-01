@@ -11,7 +11,7 @@ namespace VolkDiet.Core.Infrastructure
         void ConfigureServices(IServiceCollection services, IConfiguration configuration);
 
        
-       // void Configure(IApplicationBuilder application);
+        void Configure(IApplicationBuilder application);
 
         /// <summary>
         /// Get  implementation's order

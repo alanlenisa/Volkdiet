@@ -6,9 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VolkDiet.Core.Infrastructure;
+using VolkDiet.Core.Localization;
 
-namespace VolkDiet.Core.Localization
+namespace VolkDiet.WebCore.Mvc
 {
+    /// <summary>
+    /// localization attribute for models
+    /// </summary>
     public sealed class ResourceDisplayNameAttribute : DisplayNameAttribute
     {
        

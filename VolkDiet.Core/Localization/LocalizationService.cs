@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using VolkDiet.Core.Caching;
+using VolkDiet.Core.DataServices;
 
 namespace VolkDiet.Core.Localization
 {
@@ -24,39 +25,52 @@ namespace VolkDiet.Core.Localization
         protected readonly ILogger<LocalizationService> _logger;
        
         protected readonly ICacheManager _cacheManager;
-       
+
+        private ILocalizedStringsService _localizedStringsService;
 
 
         public LocalizationService(ILogger<LocalizationService> logger,
-            ICacheManager cacheManager) {
+            ICacheManager cacheManager,
+            ILocalizedStringsService localizedStringsService ) {
 
             _logger = logger;
             _cacheManager = cacheManager;
+            _localizedStringsService = localizedStringsService;
         }
 
-      
 
-       
 
-        protected virtual Dictionary<string, KeyValuePair<string, string>> ValuesToDict(IEnumerable<LocalizedValue> locales)
-        {
+
+        ///// <summary>
+        ///// Get dictionary,   (name,(language,text))
+        ///// </summary>
+        ///// <param name="locales"></param>
+        ///// <returns></returns>
+        //protected virtual Dictionary<string, KeyValuePair<int, string>> ValuesToDict(IEnumerable<LocalizedValue> locales)
+        //{
           
-            var dictionary = new Dictionary<string, KeyValuePair<string, string>>();
-            foreach (var l in locales)
-            {
-                var name = l.Name.ToLowerInvariant();
-                if (!dictionary.ContainsKey(name))
-                    dictionary.Add(name, new KeyValuePair<string, string>(l.Language, l.Value));
-            }
+        //    var dictionary = new Dictionary<string, KeyValuePair<int, string>>();// <name,<language,text>>
+        //    foreach (var l in locales)
+        //    {
+        //        var name = l.Name.ToLowerInvariant();
+        //        if (!dictionary.ContainsKey(name))
+        //            dictionary.Add(name, new KeyValuePair<int, string>(l.Language, l.Value));
+        //    }
 
-            return dictionary;
-        }
+        //    return dictionary;
+        //}
 
 
-
+        /// <summary>
+        /// Get resource localized
+        /// TODO:now language is only one, Italian with fixed id 
+        /// language will be taken from...(?)
+        /// </summary>
+        /// <param name="resourceKey"></param>
+        /// <returns></returns>
         public virtual async Task<string> GetResourceAsync(string resourceKey)
         {
-            var userLanguage = 0;//TODO: read user language or select default/first
+            var userLanguage = 1;//TODO: read user language or select default/first
 
             if (userLanguage >=0)
                 return await GetResourceAsync(resourceKey, userLanguage);
@@ -65,11 +79,13 @@ namespace VolkDiet.Core.Localization
         }
 
 
-        private String GetValue()
-        {
-            return "??";
-        }
-        
+        /// <summary>
+        /// Get resource localized from cache. Stored there if not present yet.
+        /// </summary>
+        /// <param name="resourceKey"></param>
+        /// <param name="language"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
         public virtual async Task<string> GetResourceAsync(string resourceKey, int language,   string defaultValue = "")
         {
             var result = string.Empty;
@@ -78,9 +94,13 @@ namespace VolkDiet.Core.Localization
             //?
 
             var key = _cacheManager.CreateKeyOnCache(COByNameCacheKey, language, resourceKey);
-            var value = _cacheManager.Get(key,() =>GetValue());
+            var value = await _cacheManager.GetAsync(key,async () =>
+
+               await _localizedStringsService.GetValueAsync(language,resourceKey)
+
+            );
             if (value != null)
-                result = value;
+                result = value.ResValue;
 
             if (!string.IsNullOrEmpty(result))
                 return result;
@@ -102,18 +122,18 @@ namespace VolkDiet.Core.Localization
             }
         }
 
-            public virtual  TPropType GetLocalizedAsync<TEntity, TPropType>(TEntity entity, Expression<Func<TEntity, TPropType>> keySelector)
-            where TEntity :class
-        {
-            if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
+        //    public virtual  TPropType GetLocalizedAsync<TEntity, TPropType>(TEntity entity, Expression<Func<TEntity, TPropType>> keySelector)
+        //    where TEntity :class
+        //{
+        //    if (entity == null)
+        //        throw new ArgumentNullException(nameof(entity));
 
             
-            var result = default(TPropType);
-            var localizer = keySelector.Compile();
-            result = localizer(entity);
-            return result;
-        }
+        //    var result = default(TPropType);
+        //    var localizer = keySelector.Compile();
+        //    result = localizer(entity);
+        //    return result;
+        //}
 
 
     }

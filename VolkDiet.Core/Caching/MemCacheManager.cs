@@ -38,6 +38,21 @@ namespace VolkDiet.Core.Caching
             _cache.Set(element.Key, value, CacheOptions(element));
         }
 
+        public async Task<T> GetAsync<T>(CachedObject element, Func<Task<T>> load)
+        {
+            if (_cache.TryGetValue(element.Key, out T res))
+                return res;
+            res = await load();
+            if (res != null)
+                await SetAsync(element, res);
+            return res;
+        }
+
+        public Task SetAsync(CachedObject element, object value)
+        {
+            Set(element, value);
+            return Task.CompletedTask;
+        }
         private MemoryCacheEntryOptions CacheOptions(CachedObject element)
         {
             return new MemoryCacheEntryOptions
@@ -61,5 +76,6 @@ namespace VolkDiet.Core.Caching
 
             _disposed = true;
         }
+
     }
 }
