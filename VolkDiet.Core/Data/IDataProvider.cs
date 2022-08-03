@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace VolkDiet.Core.Data
 {
-    internal interface IDataProvider
+    public interface IDataProvider
     {
+        string MakeConnString(string database, string server,bool trusted, string user,string password);
+
+        void CreateDb();
+
+        Task<bool> DbExistsAsync();
+
+
+        void InitDb();
     }
 }

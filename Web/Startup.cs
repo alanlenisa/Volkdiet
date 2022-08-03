@@ -30,6 +30,7 @@ namespace VolkDiet
             services.AddHttpContextAccessor();//https://www.c-sharpcorner.com/forums/httpcontext-is-null
 
             //database provider selection, setted on appsettings.json
+            
             switch (configuration["DatabaseProvider"])
             {
                 case "MsSql":
