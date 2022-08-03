@@ -2,18 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
+using NLog;
+using NLog.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.Logging;
 
 namespace VolkDiet.Core.Infrastructure
 {
    
     public class VDEngine : IEngine
     {
+        NLog.ILogger _logger;
+
+        public VDEngine()
+        {
+            _logger = NLog.LogManager./*Setup().LoadConfigurationFromAppSettings().*/GetCurrentClassLogger();
+       
+        }
+
+
 
         /// <summary>
         /// Get IServiceProvider

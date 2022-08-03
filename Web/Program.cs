@@ -1,11 +1,19 @@
-
+using NLog.Web;
 using VolkDiet.Core.Infrastructure;
 using VolkDiet.WebCore.Infrastructure;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
+
 
 //Calling configuration service routines
 builder.Services.ConfigureServicesOnApp(builder);
+
+//log with NLog
+//https://github.com/NLog/NLog/wiki/Getting-started-with-ASP.NET-Core-6
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
 
 //Add services to the container.
 //builder.Services.AddControllersWithViews();

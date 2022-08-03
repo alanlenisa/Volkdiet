@@ -9,6 +9,11 @@ namespace VolkDiet.Core.Migrations.MsSql
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+         //   public static bool IsSqlServer(this MigrationBuilder migrationBuilder)
+         //=> string.Equals(
+         //    migrationBuilder.ActiveProvider,
+         //    typeof(SqlServerOptionsExtension).Assembly.GetName().Name,
+         //    StringComparison.Ordinal);
             migrationBuilder.CreateTable(
                 name: "LAFParameters",
                 columns: table => new

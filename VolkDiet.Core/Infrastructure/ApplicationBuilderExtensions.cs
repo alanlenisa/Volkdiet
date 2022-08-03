@@ -22,7 +22,7 @@ namespace VolkDiet.Core.Infrastructure
             var engine = EngineContext.Current;
 
 
-            var logger = engine.Resolve<ILogger>();
+            var logger = engine.Resolve<ILogger<IEngine>>();
             if (logger != null)
                 logger.LogInformation("** Engine started **");
 

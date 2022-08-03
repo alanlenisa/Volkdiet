@@ -8,6 +8,7 @@ using VolkDiet.Core.DataServices;
 
 namespace VolkDiet
 {
+    
     public class Startup : IConfigStartup
     {
         public int Rank => 100;
