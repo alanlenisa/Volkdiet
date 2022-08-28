@@ -1,0 +1,18 @@
+﻿@inherits VolkDiet.Core.Mvc.BaseRazorPage<TModel>
+@{
+    ViewData["Title"] = "Page for test";
+}
+@model VolkDiet.Controllers.CacheTestModel
+<h1>@ViewData["Title"]</h1>
+
+<p>This is test for cache <br />
+    sample here <br />
+    https://github.com/dotnet/AspNetCore.Docs/blob/main/aspnetcore/performance/caching/memory/samples/6.x/CachingMemorySample/Pages/Index.cshtml</p>
+<ul>
+  
+
+    <li>@Html.LabelFor(m=>m.CurrentDateTime): @Model.CurrentDateTime.Second</li>
+	<li>@Html.LabelFor(m=>m.CachedDateTime): @Model.CachedDateTime.Second</li>
+
+    @Translate("testtranslate.string")
+</ul>

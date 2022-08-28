@@ -1,0 +1,117 @@
+﻿@model VolkDiet.Models.SetupModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Setup</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+  
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/VolkDiet.styles.css" asp-append-version="true" />
+
+    <style>
+        .row {
+            padding:5px;
+        }
+        
+        .setup-label{
+            text-align:right;
+        }
+
+        .setup-head{
+            padding: 1px 2px;
+            margin-bottom: 0;
+            background-color: rgba(0,0,0,.1);
+            border-bottom: 1px solid rgba(0,0,0,.2);
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+ <form asp-action="IndexSetup" asp-controller="Setup" id="frmInstall" method="post">
+  
+
+     <div>
+        
+         
+         
+         <div class="row">
+            
+             <div class="col-12">
+                     <p class="setup-head">Database setup</p>
+             </div>
+
+         </div>
+
+         <div class="row">
+             <div class="col-5">
+                 <p class="setup-label">Server</p>
+             </div>
+             <div class="col-7">
+                     <input asp-for="server" class="form-control" />
+             </div>
+
+         </div>
+
+
+         <div class="row">
+             <div class="col-5">
+                 <p class="setup-label">Database</p>
+             </div>
+             <div class="col-7">
+                    <input asp-for="database" class="form-control" value="_nop" />
+             </div>
+
+         </div>
+
+
+         <div class="row">
+             <div class="col-5">
+                  <p class="setup-label">User</p>
+             </div>
+             <div class="col-7">
+                     <input asp-for="user" class="form-control" value="alan" />
+             </div>
+
+         </div>
+   
+         
+         <div class="row">
+             <div class="col-5">
+                 <p class="setup-label">Password</p>
+             </div>
+             <div class="col-7">
+                        <input asp-for="password" class="form-control" value="x" />
+             </div>
+
+         </div>
+
+
+         <div class="row">
+             <div class="col-5">
+                 <p class="setup-label">Database provider</p>
+             </div>
+             <div class="col-7">
+                    <select asp-for="provider" asp-items="Model.Providers" class="form-control"></select>
+             </div>
+
+         </div>
+
+
+
+          <div class="row">
+             <div class="col-12 text-center">
+                <button type="submit" class="btn btn-warning">Install</button>
+             </div>
+          </div>  
+     </div>
+
+ </form>
+ </body>
+ </html>
