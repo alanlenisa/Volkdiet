@@ -24,8 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\MsSql\" />
-    <Folder Include="Migrations\PgSql\" />
+    <Folder Include="Migrations\PgSql\sql\" />
   </ItemGroup>
 
 </Project>

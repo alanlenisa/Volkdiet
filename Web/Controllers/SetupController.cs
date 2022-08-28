@@ -14,7 +14,7 @@ namespace VolkDiet.Controllers
         /// <returns></returns>
         public  IActionResult IndexSetup()
         {
-            if (DBSettings.IsDbInstalled())
+            if (/*DBSettings.IsDbInstalled()*/false)
                 return RedirectToRoute(WebDefaults.HOME_PAGE);
 
             var model = new SetupModel
@@ -64,6 +64,8 @@ namespace VolkDiet.Controllers
 
                 };
                 string connectionstring = dataProvider.MakeConnString(model.database, model.server, model.trusted, model.user, model.password);
+
+                dataProvider.SetConnectionString(connectionstring);
                 if (! await dataProvider.DbExistsAsync())
                     dataProvider.CreateDb();
 

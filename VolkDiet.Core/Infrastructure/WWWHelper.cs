@@ -26,6 +26,7 @@ namespace VolkDiet.Core
 
         protected virtual bool IsRequest()
         { 
+            
             try
             {
                 if (_httpContextAccessor?.HttpContext == null)

@@ -22,7 +22,7 @@ namespace VolkDiet.Core.InstallServices
         public async Task InvokeAsync(HttpContext context, IWWWHelper helper)
         {
             
-            if (!DBSettings.IsDbInstalled())
+            if (/*!DBSettings.IsDbInstalled()*/false)
             {
                 string path = $"/setup/indexsetup";
                 string url = helper.GetPageUrl(false);

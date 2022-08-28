@@ -12,8 +12,9 @@ Utilizza database MSSqlServer o Postgress
 
 Per eseguire in Visual Studio 2022:
 1. Clonare il repository o scaricare lo zip
-2. Impostare in **appsettings.json**(cartella *Web*)  il tipo di database: MsSql(SqlServer) o PgSql(Postgress)
-3. Configurare anche la stringa di connessione
+2. Installare il database (creazione tabelle e dati di base) [setup] (#installare-il-database)
+3. Impostare in **appsettings.json**(cartella *Web*)  il tipo di database: MsSql(SqlServer) o PgSql(Postgress)
+4. Configurare anche la stringa di connessione
 ```
 ...
 "ConnectionStrings": {
@@ -22,8 +23,16 @@ Per eseguire in Visual Studio 2022:
   },
 ...  
 ```
-3. Installare il database (creazione tabelle e dati di base)
-4. Eseguire l'applicativo da VS (F5, esegui, debug...)
+5. Eseguire l'applicativo da VS (F5, esegui, debug...)
+
+### Installare il database
+
+Oltre ad installarlo manualmente o con gli strumenti di migrazione, è possibile utilizzare la 
+funzione integrata. Eseguire l'applicativo e **digitare il link** 
+
+```
+/setup/indexsetup
+```
 
 ## Struttura della soluzione di Visual Studio 🐺
 
@@ -62,9 +71,9 @@ VolkDiet
 [X] Migration
 [X] Memory cache
 [X] Localization
+[X] Setup database da applicativo
 
 ### TODO
-[ ] Configurazione automatica db all'avvio
 [ ] Menù applicazione
 [ ] ...molto altro ...
 Il progetto sarà successivamente aperto a eventuali collaborazioni.
